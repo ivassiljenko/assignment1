@@ -24,10 +24,10 @@ def day_of_week(date: str) -> str:
     day, month, year = (int(x) for x in date.split('/'))
     days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     offset = {1:0, 2:3, 3:2, 4:5, 5:0, 6:3, 7:5, 8:1, 9:4, 10:6, 11:2, 12:4}
-    # Change the year for January and February based on Sakamoto's alrorithm
+    # Change the year for January and February based on Sakamoto's algorithm
     if month < 3:
         year -= 1
-    # Using Sakamoto's algorithm get the day of the week
+    # Using Sakamoto's algorithm to get the day of the week
     num = (year + year//4 - year//100 + year//400 + offset[month] + day) % 7
     return days[num]
 
@@ -63,11 +63,11 @@ def after(date: str) -> str:
     day, mon, year = (int(x) for x in date.split('/'))
     day += 1  # next day
 
-    leap_flag = leap_year(year)  # Verify it it's a leap year
+    leap_flag = leap_year(year)  # Verify if it's a leap year
 
     mon_dict= {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
            7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
-    # Update the maximum number oif day for February, if the result is a leap year
+    # Update the maximum number of days for February, if the result is a leap year
     if mon == 2 and leap_flag:
         mon_max = 29
     else:
@@ -138,7 +138,7 @@ def day_iter(start_date: str, num: int) -> str:
             date = after(date) # 'After' function sets the next date
     elif num < 0: # Move back in time if the number is positive
         for _ in range(num, 0):
-            date = before(date) # 'Before' function is uded to set the previous date
+            date = before(date) # 'Before' function is used to set the previous date
     return date
 
 
